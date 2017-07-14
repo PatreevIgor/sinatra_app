@@ -1,0 +1,13 @@
+development:
+  adapter:  postgresql
+  encoding: unicode
+  database: sample_sinatra_development
+  username: pguser
+  password: pguser
+
+production:
+  adapter:  postgresql
+  encoding: unicode
+  database: sample_sinatra_development
+  username: pguser
+  password: pguser
