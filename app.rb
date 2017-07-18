@@ -49,7 +49,12 @@ post '/create' do
 end
 
 post '/delete' do
+  begin
   User.last.delete
+  rescue Exception => e
+    puts e.message
+    puts e.backtrace.inspect
+  end
   redirect '/'
 end
 
