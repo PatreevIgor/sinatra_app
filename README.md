@@ -1,3 +1,1 @@
-# sinatra_app
-Sample sinatra application
-Heroku link: https://supersinatra.herokuapp.com/
+The project allows you to authenticate via Google. Registered users can work with the database and can see the JWT before encoding and after. Also registered users can see the contents of the session on the main page.
