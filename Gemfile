@@ -15,3 +15,4 @@ gem 'sinatra-partial'
 gem 'jwt'
 gem 'rubocop', require: false
 gem 'sinatra-flash'
+gem 'pry'

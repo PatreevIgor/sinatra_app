@@ -1,1 +1,1 @@
-<%= session[:access_token] ? session[:email]['data']['email'] : 'You are nor autorized' %>
+<%= authorized? ? current_user_email : NOT_AUTHORIZED_ERROR_MESSAGE %>
