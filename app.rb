@@ -7,6 +7,7 @@ require 'json'
 require 'dotenv'
 require 'sinatra/partial'
 require 'jwt'
+require 'sinatra/flash'
 
 Dotenv.load
 register Sinatra::Partial
@@ -78,10 +79,10 @@ end
 
 post '/delete' do
   begin
-  User.last.delete
+    User.last.delete
   rescue Exception => e
-    puts e.message
-    puts e.backtrace.inspect
+  flash[:error] = "In #{Time.now} was a mistake"
+  "Error message #{flash[:error]}"
   end
   redirect '/'
 end

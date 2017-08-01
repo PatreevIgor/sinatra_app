@@ -14,3 +14,4 @@ gem 'rake'
 gem 'sinatra-partial'
 gem 'jwt'
 gem 'rubocop', require: false
+gem 'sinatra-flash'
