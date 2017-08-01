@@ -16,8 +16,6 @@ enable :sessions
 
 SCOPES = ['https://www.googleapis.com/auth/userinfo.email'].join(' ')
 
-# --------------------------------------------------------------------
-
 signing_key_path = File.expand_path("../app.rsa", __FILE__)
 verify_key_path = File.expand_path("../app.rsa.pub", __FILE__)
 
@@ -35,8 +33,6 @@ end
 set :signing_key, signing_key
 set :verify_key, verify_key
 
-# --------------------------------------------------------------------
-
 def check_g_api_client
   raise 'You must specify the G_API_CLIENT env variable' unless ENV['OAUTH2_CLIENT_ID']
 end
@@ -48,9 +44,6 @@ end
 check_g_api_client
 check_g_api_secret
 
-# --------------------------------------------------------------------
-
-
 get '/' do
   @users = User.all
   if session[:access_token]
@@ -61,7 +54,9 @@ get '/' do
 end
 
 get '/auth' do
-  redirect client.auth_code.authorize_url(:redirect_uri => redirect_uri,:scope => SCOPES,:access_type => 'offline')
+  redirect client.auth_code.authorize_url(:redirect_uri => redirect_uri,
+                                          :scope => SCOPES,
+                                          :access_type => 'offline')
 end
 
 get '/oauth2callback' do
@@ -101,8 +96,8 @@ end
 
 def client
   client ||= OAuth2::Client.new(ENV['OAUTH2_CLIENT_ID'], ENV['OAUTH2_CLIENT_SECRET'], {
-                :site => 'https://accounts.google.com',
-                :authorize_url => "/o/oauth2/auth",
-                :token_url => "/o/oauth2/token"
-              })
+    :site => 'https://accounts.google.com',
+    :authorize_url => "/o/oauth2/auth",
+    :token_url => "/o/oauth2/token"
+  })
 end

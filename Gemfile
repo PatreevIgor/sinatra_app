@@ -13,3 +13,4 @@ gem 'dotenv'
 gem 'rake'
 gem 'sinatra-partial'
 gem 'jwt'
+gem 'rubocop', require: false
