@@ -19,11 +19,8 @@ enable :sessions
 LINK_USER_INFO = 'https://www.googleapis.com/userinfo/email?alt=json'.freeze
 NOT_AUTHORIZED_ERROR_MESSAGE = 'You are nor autorized'.freeze
 
-signing_key_path = File.expand_path('../app.rsa', __FILE__)
-verify_key_path  = File.expand_path('../app.rsa.pub', __FILE__)
-
-signing_key = File.open(signing_key_path) { |file| OpenSSL::PKey.read(file) }
-verify_key  = File.open(verify_key_path)  { |file| OpenSSL::PKey.read(file) }
+signing_key = OpenSSL::PKey.read(ENV['PRV_KEY'])
+verify_key = OpenSSL::PKey.read(ENV['PUB_KEY'])
 
 set :signing_key, signing_key
 set :verify_key,  verify_key

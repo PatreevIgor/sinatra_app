@@ -1,11 +1,11 @@
 require 'dotenv'
+require 'pry'
 
 class Authentificator
   SCOPES        = ['https://www.googleapis.com/auth/userinfo.email'].join(' ')
   SITE          = 'https://accounts.google.com'.freeze
   AUTHORIZE_URL = '/o/oauth2/auth'.freeze
   TOKEN_URL     = '/o/oauth2/token'.freeze
-  APP_BASE_URL  = 'http://localhost:4567'.freeze
 
   def initialize
     raise 'You must specify the G_API_CLIENT env variable' unless ENV['OAUTH2_CLIENT_ID']
@@ -23,7 +23,7 @@ class Authentificator
   private
 
   def redirect_uri
-    URI("#{APP_BASE_URL}/oauth2callback")
+    URI("#{ENV['APP_BASE_URL']}/oauth2callback")
   end
 
   def client
