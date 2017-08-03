@@ -1,0 +1,4 @@
+.env
+app.rsa
+app.rsa.pub
+database.yml

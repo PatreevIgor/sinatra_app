@@ -1,0 +1,7 @@
+<ul class='dropdown-menu'>
+  <li><a href='/auth'>Login</a></li>
+  <li class='divider'></li>
+  <% if authorized? %>
+    <li><a href='/logout'>Logout</a></li>
+  <% end %>
+</ul>
