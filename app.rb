@@ -53,17 +53,19 @@ get '/logout' do
 end
 
 post '/create' do
-  User.create(first_name: params[:username])
-
-  redirect '/'
+  user = User.create(first_name: params[:username])
+  if user.save
+    redirect '/'
+  else
+    flash[:error] = user.errors.full_messages.to_sentence
+  end
 end
 
 post '/delete' do
   begin
     User.last.delete
-  rescue Exception => e
-    flash[:error] = "In #{Time.now} was a mistake"
-    "Error message #{flash[:error]}"
+  rescue => e
+    flash[:error] = "#{e}"
   end
 
   redirect '/'
